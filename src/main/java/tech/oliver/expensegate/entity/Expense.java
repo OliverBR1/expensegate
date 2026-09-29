@@ -10,15 +10,20 @@ public class Expense {
     @Id
     @GeneratedValue
     private Long id;
+
     @Column(nullable = false)
     private String title;
+
     @Column(nullable = false)
     private BigDecimal amount;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Department department;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User owner;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ExpenseStatus status;

@@ -2,6 +2,9 @@ package tech.oliver.expensegate.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_user")
 public class User {
@@ -20,13 +23,21 @@ public class User {
     @Column(nullable = false)
     private Department department;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+
     public User() {
     }
 
-    public User(String username, String password, Department department) {
+    public User(String username, String password, Department department, Set<Role> roles) {
         this.username = username;
         this.password = password;
         this.department = department;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -59,5 +70,13 @@ public class User {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

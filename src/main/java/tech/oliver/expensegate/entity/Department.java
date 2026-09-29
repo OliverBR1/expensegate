@@ -2,6 +2,6 @@ package tech.oliver.expensegate.entity;
 
 public enum Department {
 
-    IT,
-    ENG
+    TI,
+    IT, ENG
 }

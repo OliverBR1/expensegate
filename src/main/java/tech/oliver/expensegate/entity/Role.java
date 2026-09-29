@@ -11,8 +11,10 @@ public class Role {
     @Id
     @GeneratedValue
     private Long id;
+
     @Column(unique = true, nullable = false)
     private String name;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_role_authority",
             joinColumns = @JoinColumn(name = "role_id"),
