@@ -1,0 +1,22 @@
+meta {
+  name: Decide Expense
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8080/expenses/252/decisions
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: admin
+  password: admin
+}
+
+body:json {
+  {
+    "decision": "REJECTED"
+  }
+}

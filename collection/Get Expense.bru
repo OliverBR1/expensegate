@@ -1,0 +1,23 @@
+meta {
+  name: Get Expense
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8080/expenses/252
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: admin
+  password: admin
+}
+
+body:json {
+  {
+    "title": "Minha despesa",
+    "amount": 100.00
+  }
+}
